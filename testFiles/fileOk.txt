@@ -5,8 +5,8 @@
                 return arg.required ? '<' + arg.name +
                         '>' : '[' + arg.name + ']';
             }).join(' ');
-
-            return cmd.name.blue +
+{ .abc }
+            return cmd.name.blue +             { .abc }
                 (cmd.options.length ? ' [options]'.white
                 : '') +
                 ' ' +
