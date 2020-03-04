@@ -2,59 +2,45 @@
 const fs = require('fs');
 
 function fileCheck(args) { 
-    let testDir = 'testFiles/';
-
     if(args.length !== 3) {
         console.error('Check your parameters\nUsage: ./fileCheck <FILE_TO_CHECK>\n');
         process.exit(1);
     }
 
-    let file = args[2];
-    
+    let file = args[2];  
     if (!fs.existsSync(file)) {
         console.error('File not found: ', file);
         process.exit(1);
     }
+
     const content = fs.readFileSync(file, 'utf8');
-
-    let searchString = '{ .abc }';
-    let regex = new RegExp(searchString, 'g');
+    let regex = new RegExp('{ .abc }', 'g');
     let count = (content.match(regex)|| []).length;
-
-
     let alteredText = content.replace(/{ .(abc|test123) }/g, "#!#").replace(/{ .[A-Za-z0-9]+ }/g, "!#!");
 
     if(count == 0) console.log("There's no occurrence of the string '{ .abc }'")
-    else {
-        console.log(`This file contains ${count} times the string '{ .abc }', will replace it by '#!#'`);
-        try {
+    else console.log(`This file contains ${count} times the string '{ .abc }', will replace it by '#!#'`);
+
+    try {
             fs.writeFileSync(file, alteredText, 'utf8');
             console.log('File updated successfully')
-          } catch(err) {
+    } catch(err) {
             console.error(err);
-          }
     }
-
-
-    const lines = content.split(/\r?\n/);
+    
+    const lines = alteredText.split(/\r?\n/);
     let stack = [];
     
     for(let line = 0; line < lines.length; line++) {
-
         for (var i = 0; i < lines[line].length; i++) {
-    
             if(lines[line].charAt(i) === '{') {
-                // console.log(`Found opening brackets on line ${line + 1} on position ${i + 1}`);
                 stack.push(['open', line + 1, i+1]);
-            }
-            if(lines[line].charAt(i) === '}') {
-                // console.log(`Found closing brackets on line ${line + 1} on position ${i + 1}`);
+            } else if(lines[line].charAt(i) === '}') {
                 (stack.length > 0) ? stack.pop() : stack.push(['close', line+1, i+1]);
             }
-          }
+        }
     };
-    return stack;
-    
+    return stack; 
 }
 
 exports.fileCheck = fileCheck;
