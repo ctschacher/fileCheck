@@ -1,0 +1,4 @@
+{ .BBBdozkd }  { .test123 } { .LOU4dozkd }  { .test123 }   should turn into: !#! #!# !#! #!#
+xxxxxxxx aaaaaaa bbbbbbb cccccc
+{ .test123 } { .abc } { .Ylasdfa87sd }  should turn into: #!# #!# !#!
+xxxxxxxx aaaaaaa bbbbbbb cccccc
