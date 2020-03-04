@@ -1,4 +1,12 @@
-{ .BBBdozkd }  { .test123 } { .LOU4dozkd }  { .test123 }   should turn into: !#! #!# !#! #!#
+{ . }           // do nothing
+{ .x }          // change into #!#
+{ .test123 }    // change into #!#
+{ .test-123 }   // change into !#!
+{ test }        // do nothing
+{ ..123 }       // change into !#!
+
+
+{ .BBBdozkd }  { .test123 } { .LOU4dozkd }  { .test-123 }   should turn into: #!# #!# #!# !#!
 xxxxxxxx aaaaaaa bbbbbbb cccccc
 { .test123 } { .abc } { .Ylasdfa87sd }  should turn into: #!# #!# !#!
 xxxxxxxx aaaaaaa bbbbbbb cccccc
