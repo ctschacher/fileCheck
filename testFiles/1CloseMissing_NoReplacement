@@ -1,0 +1,16 @@
+        var cmdInfos = this.commands.map(function(cmd) {
+            var args = cmd.args.map(function(arg) {
+                console.log("cmd: " + cmd.name + "\t\targ.name: " + arg.name)
+                console.log(cmd.name + "\t\targ.name: " + arg.name)
+                return arg.required ? '<' + arg.name +
+                        '>' : '[' + arg.name + ']';
+            }).join(' ');
+
+            return cmd.name.blue +
+                (cmd.options.length ? ' [options]'.white
+                : '') +
+                ' ' +
+                args.white +
+                (cmd.description() ? '\n' +
+                cmd.description().grey : '');
+        );

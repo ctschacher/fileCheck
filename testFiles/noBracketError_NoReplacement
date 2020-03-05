@@ -1,16 +1,16 @@
-        var cmdInfos = this.commands.map(function(cmd) { { .acde34dozkd }
+        var cmdInfos = this.commands.map(function(cmd) { 
             var args = cmd.args.map(function(arg) {
                 console.log("cmd: " + cmd.name + "\t\targ.name: " + arg.name)
                 console.log(cmd.name + "\t\targ.name: " + arg.name)
                 return arg.required ? '<' + arg.name +
                         '>' : '[' + arg.name + ']';
-            }).join(' ', { .test123 });
+            }).join(' ', );
 
-            return cmd.name.blue + { .test123 }
+            return cmd.name.blue +
                 (cmd.options.length ? ' [options]'.white
-                : '') + { .abc }
+                : '') + 
                 ' ' +
-                { .acde34dozkd } + args.white +
+                 + args.white +
                 (cmd.description() ? '\n' +
                 cmd.description().grey : '');
         });

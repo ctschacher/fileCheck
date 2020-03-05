@@ -1,0 +1,5 @@
+This is a { .item }:
+Look at { .name }! He will eat { .number } { .fruit }s and all of them are { .color }.
+
+A variable that is not defined in the dictionary: { .unknownVar }
+Not a variable: { asdfa }
