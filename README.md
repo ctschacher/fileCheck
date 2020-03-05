@@ -40,7 +40,7 @@ git clone https://github.com/ctschacher/fileCheck.git
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-### 1. Run the fileCheck test
+### 1. Run fileCheck
 ```sh
 ./fileCheck.js testFiles/2CloseMissing_NoReplacement
 ```
@@ -52,9 +52,9 @@ on line 1, pos: 56
 on line 2, pos: 51
 ```
 
-### 2. useDictionary test
+### 2. Run useDictionary
 #### Content of input file:
-The input file contains several placeholders with pattern: { .XXXXXXX } where every 'X' is either a letter or a number. The 'XXXXXXX' string is then used a the variable name that is looked up in the dictionary.
+The input file contains several placeholders with pattern: { .XXXXXXX } where every 'X' is either a letter or a number. The 'XXXXXXX' string is then used as variable name that is looked up in the dictionary to retrieve the corresponding value for it.
 
 ```sh
 This is a { .item }:
