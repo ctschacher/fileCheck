@@ -30,7 +30,7 @@ function loadFile(file) {
 function loadDictionary(dict) {
     let dictionaryObj = {};
     const content = loadFile(dict);
-    const regex = /(\w+)\s*=\s*(\w+)/g;
+    const regex = /(\w+)\s*=\s*(\w+)/g; 
     let matches;
 
     while ((matches = regex.exec(content)) !== null) {
@@ -41,9 +41,6 @@ function loadDictionary(dict) {
 }
 
 // ---- main ----
-let dictionary = 'dictionary';
-
-// check if input file was provided
 if(process.argv.length !== 3) {
     console.error('Check your parameters\nUsage: ./useDictionary <INPUT_FILE>\n');
     process.exit(1);
@@ -51,10 +48,8 @@ if(process.argv.length !== 3) {
 
 let inputFile = process.argv[2];
 let inputFileContent = loadFile(inputFile);
-let dictObj = loadDictionary(dictionary);
-let alteredText = inputFileContent.replace(/{ \.([A-Za-z0-9]+) }/g, function(_, variable){
-    return dictObj[variable];
-});
+let dictObj = loadDictionary('dictionary');
+let alteredText = inputFileContent.replace(/{ \.([A-Za-z0-9]+[A-Za-z0-9_]*) }/g, ((_, variable) => dictObj[variable]));
 
 if(inputFileContent !== alteredText) {  // if change (replacement) occurred write it to file
     try {
